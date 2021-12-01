@@ -1,4 +1,3 @@
-import { axe } from 'jest-axe';
 import { render } from './test-utils';
 
 import { useId } from '../src/index';
@@ -15,9 +14,7 @@ describe(`useId`, () => {
 			);
 		}
 		let { container } = render(<Comp />);
-		let results = await axe(container);
-
-		expect(results).toHaveNoViolations();
+		await expect(container).toHaveNoAxeViolations();
 	});
 
 	it('should generate a unique ID', () => {
