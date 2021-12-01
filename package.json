@@ -15,7 +15,7 @@
     "require": "./dist/react-lit-auto-id.cjs",
     "import": "./dist/react-lit-auto-id.modern.js"
   },
-  "typings": "dist/index.d.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "LICENSE"
