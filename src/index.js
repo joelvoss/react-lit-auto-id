@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import * as React from 'react';
 import { useIsomorphicLayoutEffect as useLayoutEffect } from '@react-lit/helper';
 
 let serverHandoffComplete = false;
@@ -26,7 +26,7 @@ export function useId(parentId) {
 	// and return it.
 	const initialId = parentId || (serverHandoffComplete ? genId() : null);
 
-	const [id, setId] = useState(initialId);
+	const [id, setId] = React.useState(initialId);
 
 	useLayoutEffect(() => {
 		if (id === null) {
@@ -34,10 +34,10 @@ export function useId(parentId) {
 		}
 	}, [id]);
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (serverHandoffComplete === false) {
 			// NOTE(joel): Flag all future uses of `useId` to skip the update dance.
-			// This is in `useEffect` because it goes after `useLayoutEffect`,
+			// This is in `React.useEffect` because it goes after `useLayoutEffect`,
 			// ensuring we don't accidentally bail out of the patch-up dance
 			// prematurely.
 			serverHandoffComplete = true;
